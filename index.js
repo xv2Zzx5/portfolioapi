@@ -23,11 +23,12 @@ app.use(cors({
 }
 
 ))
-app.use(express.text())
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use("/posts",  postsRouter)
 
 app.post("/admin/login",(request,response) => {
+    
     if(!request.body){
         return response.status(400).send("data is not provided")
     }
