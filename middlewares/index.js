@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 export function verifyToken(request,response,next){
     const auth = request.headers.authorization
-    const secret = "f7d6e2fb369db9a0a695ad6ac09998f7"
+    const secret = process.env.JWT_SECRET
     if (!auth){
         return response.status(400).send("no authorization")
         

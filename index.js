@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import dotenv from "dotenv"
 dotenv.config()
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||5000;
 const app = express();
 const password = bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10)
 const admin = {
