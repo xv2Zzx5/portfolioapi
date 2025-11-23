@@ -18,7 +18,7 @@ const secret = process.env.JWT_SECRET
 
 //Middlewares 
 app.use(cors({
-        origin: "https://hwrk.vercel.app", //"http://localhost:5173",
+        origin: process.env.FRONT_END_ORIGIN, 
         methods:["GET","POST","DELETE","PUT"]
 }
 
