@@ -19,15 +19,17 @@ router.get("/:id", (request,response) => {
         })
     
 })
-router.get("/", (request,response) => {
-    db.all(`
-        SELECT * FROM posts 
-        `, (err, posts) => {
-            if(err){
-                return response.status(500).send("unknown server error")
-            }
-            return response.status(200).send(posts)
-        })
+router.get("/", async (request,response) => {
+    // db.all(`
+    //     SELECT * FROM posts 
+    //     `, (err, posts) => {
+    //         if(err){
+    //             return response.status(500).send("unknown server error")
+    //         }
+    //         return response.status(200).send(posts)
+    //     })
+    const data = await db.from("posts").select("*")
+    return response.status(200).send(data)
 })
 router.post("/", verifyToken, (request, response) => {
     if(!request.body){
