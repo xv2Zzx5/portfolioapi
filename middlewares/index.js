@@ -13,6 +13,7 @@ export function verifyToken(request,response,next){
     }
     jwt.verify(token, secret, (err, username) => {
         if(err){
+            console.log(err,token)
             return response.status(400).send("token expired")
 
         }
